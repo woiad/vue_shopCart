@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>测试 v-cloak</title>
+	</head>
+	<style>
+		[v-cloak]{display: none;}
+	</style>
+	<body>
+		<div id="app" v-cloak>
+			{{msg}}
+		</div>
+		<script type="text/x-javascript" src="../js/lib/vue.min.js"></script>
+		<script>
+			var app = new Vue({
+				el:"#app",
+				data:{
+					msg:"hello"
+				},
+				beforeCreate:function(){
+					console.group('beforeCreat 创建前状态===========>>');
+					console.group("%c%s","color:red","el   :"+this.$el);
+					console.group("%c%s","color:red","data  :"+this.$data);
+					console.group("%c%s","color:red","message  :"+this.msg)
+				},
+				created:function(){
+					console.group("created 创建完毕状态==============>>");
+					console.group("%c%s","color:red","el   :"+this.$el);
+					console.group("%c%s","color:red","data  :"+this.$data);
+					console.group("%c%s","color:red","message  :"+this.msg)
+				},
+				beforeMount:function(){
+					console.group("beforeMount 挂载前状态==============>>");
+					console.group("%c%s","color:red","el   :"+this.$el);
+					console.group("$c%s","color:red","data  :"+this.$data);
+					console.group("%c%s","color:red","message  :"+this.msg)
+				},
+				mounted:function(){
+					console.group("mounted 挂载结束状态==============>>");
+					console.group("%c%s","color:red","el   :"+this.$el);
+					console.group("%c%s","color:red","data  :"+this.$data);
+					console.group("%c%s","color:red","message  :"+this.msg)
+				}
+			})
+		</script>
+	</body>
+</html>
